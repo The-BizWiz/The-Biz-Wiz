@@ -3,6 +3,10 @@ const router = new Router();
 
 // business related routes
 
+// register a new business
+
+// business login
+
 // business own profile
 router.get('/');
 
@@ -28,5 +32,7 @@ router.get('/:type/rad=?:distance');
 // business deletes a post
 
 // business deletes a comment it made or a comment on a post it made
+
+// search engine for business name, description
 
 module.exports = router;
