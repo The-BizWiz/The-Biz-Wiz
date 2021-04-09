@@ -16,6 +16,8 @@ router.get('/all');
 // get all businesses by type
 router.get('/:type');
 
+// get all businesses by location
+
 // get all businesses by type & location
 router.get('/:type/rad=?:distance');
 
@@ -24,6 +26,10 @@ router.get('/:type/rad=?:distance');
 // business makes a post
 
 // business comments on a post
+
+// get one post belonging to a business (& comments on that post)
+
+// get all posts belonging to a business
 
 // business updates a post
 
