@@ -3,6 +3,9 @@ const router = new Router();
 
 // business related routes
 
+// business own profile
+router.get('/');
+
 // get all businesses
 router.get('/all');
 
