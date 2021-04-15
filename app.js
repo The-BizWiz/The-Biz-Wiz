@@ -8,7 +8,6 @@ const businessRouter = require("./routes/business");
 //middleware
 app.use(express.urlencoded());
 app.use(express.json());
-app.use(log);
 
 // set up sessions
 // app.use(
