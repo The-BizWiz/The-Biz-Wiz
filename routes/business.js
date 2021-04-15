@@ -32,6 +32,7 @@ const {
 
 // register a new business
 router.post("/register", createBusiness);
+
 // business login
 router.post("/login");
 
@@ -47,7 +48,7 @@ router.get("/:type");
 // get all businesses by location
 
 // get all businesses by type & location
-router.get("/:type/rad=?:distance");
+router.get("/:type/?rad=:distance");
 
 // delete a business
 router.delete("/:id/delete", deleteBusiness);
@@ -59,11 +60,14 @@ router.post("/createPost", createPost);
 router.post("/:postId", createComment);
 
 // get one post belonging to a business (& comments on that post)
+router.get("/:postId", getAPost);
 
 // get all posts belonging to a business
+router.get("/:businessId", getBusinessPosts);
 
 // business updates a post
 router.put("/:postId", updatePost);
+
 // business updates a comment
 router.put("/:commentId", updateComment);
 
@@ -74,7 +78,7 @@ router.delete("/:postId", deletePost);
 router.delete("/:postId/:commentsId", deleteComment);
 
 // search engine for business name, description
-router.get("/search?:query", getBusinessByName);
+router.get("/?search=:query", getBusinessByName);
 
 
 module.exports = router;
