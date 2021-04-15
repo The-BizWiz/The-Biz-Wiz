@@ -126,7 +126,6 @@ router.get("/category/:type");
 // get all businesses by type & location
 router.get("/category/:type/distance/?rad=:distance");
 
-
 // business makes a post
 router.post("/home/create-post", createPost);
 

@@ -11,10 +11,18 @@ describe("Businesses TESTS", () => {
       type: "biz",
       logo: "img.com",
     };
-    server.post("business/register").send(data).expect(201, done());
+    return server.post("business/register").send(data).expect(201, done());
   });
 
   it("Get all Businesses", (done) => {
     return server.get("business/all").expect(200, done());
   });
+
+  it("Login as a business", (done) => {
+    const user = {
+      user_name: "Test",
+      password: "bizzzz"
+    };
+    return server.post("business/login").send(user).expect(201, done());
+  })
 });

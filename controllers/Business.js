@@ -105,7 +105,6 @@ module.exports = {
   getBusinessByName,
   getABusiness,
   createBusiness,
-  loginBusiness,
   updateBusiness,
   deleteBusiness,
 };
