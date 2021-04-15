@@ -1,5 +1,10 @@
 const { Router } = require("express");
 const router = new Router();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const session = require('express-session');
+const db = require("../db");
+
 const {
   getAllBusinesses,
   locateBusiness,
@@ -28,7 +33,81 @@ const {
   updatePost,
   deletePost,
 } = require("../controllers/Posts");
+
+router.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    name: "sessionName",
+  })
+)
+
 // business related routes
+
+router.get("/", (req, res) => {
+  req.session.user = {
+    
+  }
+})
+
+// register a new business
+router.post("/register", async (req, res) => {
+  const {
+    business_name,
+    user_name,
+    password
+  } = req.body;
+
+  let hashedPassword;
+
+  try {
+    const saltRounds = 10;
+    hashedPassword = await bcrypt.hash(password, saltRounds);
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+
+  const user = {
+    user_name,
+    business_name,
+    password: hashedPassword
+  }
+
+  createBusiness(user);
+
+  req.session.user = user;
+});
+
+// business login
+router.post("/login", async (req, res) => {
+  const { user_name, password } = req.body
+
+  const user = await db.any('SELECT * FROM businesses WHERE user_name=${user_name}', user_name);
+
+  if (!user) {
+    return res.json({
+      message: "No user found with that user name"
+    })
+  }
+
+  let match;
+
+  try {
+    match = await bcrypt.compare(password, user.password);
+  } catch (err) {
+    return res.json(err)
+  }
+
+  if (!match) {
+    return res.json({
+      message: "Invalid Credientials"
+    })
+  }
+
+  req.session.user = user;
+
+});
 
 // get all businesses
 router.get("/all", getAllBusinesses);
@@ -47,11 +126,6 @@ router.get("/category/:type");
 // get all businesses by type & location
 router.get("/category/:type/distance/?rad=:distance");
 
-// register a new business
-router.post("/register", createBusiness);
-
-// business login
-router.post("/login");
 
 // business makes a post
 router.post("/home/create-post", createPost);
