@@ -75,6 +75,7 @@ async function updatePost(req, res) {
     res.status(500).send(err);
   }
 }
+
 module.exports = {
   getAPost,
   getBusinessPosts,
@@ -83,3 +84,4 @@ module.exports = {
   updatePost,
   deletePost,
 };
+

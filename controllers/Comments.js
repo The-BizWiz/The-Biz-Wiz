@@ -90,6 +90,7 @@ async function deleteComment(req, res) {
     res.status(500).send(err);
   }
 }
+
 module.exports = {
   getAComment,
   getAllComments,
@@ -99,3 +100,4 @@ module.exports = {
   updateComment,
   deleteComment,
 };
+

@@ -42,8 +42,10 @@ router.get("/search?:query", getBusinessByName);
 // get all businesses by type
 router.get("/:type");
 
+// get all businesses by location
+
 // get all businesses by type & location
-router.get("/:type/rad=?:distance");
+router.get("/:type/?rad=:distance");
 
 // register a new business
 router.post("/register", createBusiness);
