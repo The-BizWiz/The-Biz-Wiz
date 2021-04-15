@@ -115,6 +115,9 @@ router.get("/all", getAllBusinesses);
 // business own profile
 router.get("/home/:id", getABusiness);
 
+// get one post belonging to a business (& comments on that post
+router.get("/post/:postId", getAPost);
+
 // search engine for business name, description
 router.get("/find/?search=:query", getBusinessByName);
 
@@ -128,6 +131,9 @@ router.get("/category/:type/distance/?rad=:distance");
 
 // business makes a post
 router.post("/home/create-post", createPost);
+
+// get all posts belonging to a business
+router.get("/posts/:businessId/all", getBusinessPosts);
 
 // business comments on a post
 router.post("/post/:postId/comment", createComment);
