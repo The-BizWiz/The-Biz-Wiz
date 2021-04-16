@@ -53,7 +53,7 @@ async function getABusiness(req, res) {
 //create one business and add to table
 async function createBusiness(req, res) {
   try {
-    console.log("JEST YOU'RE RUDE inside");
+    // console.log("JEST YOU'RE RUDE inside");
     const { password } = req.body;
 
     let hashedPassword;
