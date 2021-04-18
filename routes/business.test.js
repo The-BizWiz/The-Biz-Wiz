@@ -4,8 +4,10 @@ const server = request(app);
 describe("Businesses TESTS", () => {
   it("Register A Business", async (done) => {
     const data = {
+
       business_name: "Testing NEW 00322",
       user_name: "Testing api NEW00322",
+
       password: "biz_ 005",
       address: "biz st",
       type: "biz",
@@ -64,6 +66,7 @@ describe("Posts TESTS", () => {
       content: "testing for biz 026663",
     };
     await server.post("/business/create-post/4").send(data);
+
     done();
   });
 

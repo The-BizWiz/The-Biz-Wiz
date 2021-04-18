@@ -70,6 +70,7 @@ router.get("/home/:id", getABusiness);
 router.put("/home/:id", updateBusiness);
 
 // get one post belonging to a business (& comments on that post
+
 router.get("/posts/post/:id", getAPost);
 
 // search engine for business name, description
@@ -84,6 +85,7 @@ router.get("/category/:type");
 router.get("/category/:type/distance/?rad=:distance");
 
 // business makes a post
+
 router.post("/create-post/:business_id", createPost);
 
 // get all posts belonging to a business
@@ -96,7 +98,9 @@ router.get("/posts/post/:id/comments/all", getPostComments);
 router.post("/posts/post/:post_id/comment/create/:business_id", createComment);
 
 // business updates a post
+
 router.put("/posts/post/:id/edit", updatePost);
+
 
 // business updates a comment
 router.put("/posts/post/:id/comment/:commentId", updateComment);
